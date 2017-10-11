@@ -43,13 +43,31 @@
 </style>
 </head>
 
+
+
+
 <body>
-<div id="mainContent">
-<p id="helloText">?</p>
-<button id="clickButton" class="buttonStyle">click me</button>
-<h2>{{pageName}}</h2>
-<h2 v-text="description"></h2>
-</div>
+	<div id="mainContent">
+		<p id="helloText">?</p>
+		<button id="clickButton" class="buttonStyle">click me</button>
+		<h2>{{pageName}}</h2>
+		<h2 v-text="description"></h2>
+		<h2 v-once>{{renderonce}}</h2>
+		<h2 v-html="gotolink"></h2>
+		<input v-model="userAnswer" type="text" name="Enter your favorite color"/>
+		<h2 v-text="userAnswer"></h2>
+		<h1 v-text="checkboxSelected">You have selected: {{checkboxSelected}}</h1>
+		<input type="checkbox" v-model="checkboxSelected" value="Blueberries">Blueberries</input>
+		<input type="checkbox" v-model="checkboxSelected" value="Kale">Kale</input>
+	</div>
+
+
+
+
+
+
+
+
 
 <script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
 <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -68,7 +86,11 @@ var mypage = new Vue({
 	el: "#mainContent",
 	data: {
 		pageName: "This is my page",
-		description: "This is my description"
+		description: "This is my description",
+		renderonce: "This content will only render once on the page and there wont be a listener on it, improving performance",
+		gotolink: "<a href='https://google.com'>This link was rendered from html that was in the data</a>",
+		userAnswer: '',
+		checkboxSelected: []
 	}
 });
 </script>
